@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>Kyungmin 게시판</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Kyungmin 게시판</h1>
+
+        <div class="top-menu">
+            <a class="button" href="/board/new">새 글 작성</a>
+        </div>
+
+        {% if posts %}
+        <ul class="post-list">
+            {% for post in posts %}
+            <li>
+                <span class="post-number">{{ post.id }}</span>
+
+                <a href="/board/{{ post.id }}">
+                    {{ post.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% else %}
+        <p class="empty-message">
+            등록된 게시글이 없습니다.
+        </p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
